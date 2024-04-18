@@ -11,8 +11,3 @@ RUN apt-get install -y cmake-data
 RUN apt-get install -y libncurses5-dev
 RUN apt-get install -y check
 run cmake . && make
-
-FROM builder AS tester
-COPY --from=builder /TetrisC /TetrisC
-
-CMD ./bin/check_block
