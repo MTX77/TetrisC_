@@ -1,0 +1,4 @@
+FROM builder AS tester
+COPY --from=builder /TetrisC /TetrisC
+
+CMD ./bin/check_block
