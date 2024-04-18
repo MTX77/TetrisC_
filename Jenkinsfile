@@ -29,7 +29,6 @@ pipeline {
                 sh '''
                 docker build -t tetris_builder:latest -f ./Dockerfile .
                 docker run --rm --name buildcontainer -v ./artifacts:/dist tetris_builder:latest
-                mkdir log
                 docker logs buildcontainer > ./log/log_builder
                 '''
             }
