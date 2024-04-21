@@ -2,7 +2,17 @@ FROM ubuntu:latest AS builder
 
 WORKDIR ./TetrisC
 
-FROM builder AS tester
-COPY --from=builder /TetrisC /TetrisC
+RUN apt-get update && apt-get install -y \
+    git \
+    pkg-config \
+    cmake \
+    cmake-data \
+    libncurses5-dev \
+    check \
+    && git clone https://github.com/lucadellalib/TetrisC.git \
+    && cd TetrisC \
+    && cmake . && make
 
-CMD ./bin/check_block
+FROM builder AS tester
+
+CMD ["./bin/check_block"]
