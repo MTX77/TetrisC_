@@ -36,7 +36,21 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Testing..."
-                sh 'docker build -t tetris_tester:latest -f ./DockerfileTests .'
+                sh '''
+                docker build -t tetris_tester:latest -f ./DockerfileTests .
+                docker run --name testcontainer -v ./artifacts:/dist tetris_tester:latest
+                docker logs testcontainer > ./log/log_tester.txt
+                '''
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying..."
+                sh '''
+                docker build -t tetris_deploy:latest -f ./DockerfileDeploy .
+                docker run --name deploycontainer -v ./artifacts:/dist tetris_deploy:latest
+                docker logs deploycontainer > ./log/log_deploy.txt
+                '''
             }
         }
     }
