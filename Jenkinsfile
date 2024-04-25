@@ -57,13 +57,17 @@ pipeline {
         stage('Archive') {
             steps {
                 echo "Archiving..."
-                archiveArtifacts artifacts: 'artifacts', fingerprint: true
+                archiveArtifacts artifacts: './log', fingerprint: true
             }
         }
         stage('Publish') {
             steps {
                 echo "Publishing..."
-                sh './send-to-github.sh'
+                sh '''
+                git add ./log
+                git commit
+                git push origin
+                '''
             }
         }
     }
