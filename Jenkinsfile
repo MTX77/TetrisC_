@@ -67,7 +67,7 @@ pipeline {
                 git config --global user.email "mlugowski@student.agh.edu.pl"
                 git config --global user.name "Mateusz Lugowski"
                 git add ./log
-                git commit
+                git commit -m "Publish artifacts"
                 git push origin
                 '''
             }
