@@ -57,7 +57,8 @@ pipeline {
         stage('Archive') {
             steps {
                 echo "Archiving..."
-                archiveArtifacts artifacts: 'log', fingerprint: true
+                sh'ls ./artifacts'
+                archiveArtifacts artifacts: 'log/*', fingerprint: true
             }
         }
         stage('Publish') {
@@ -66,7 +67,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'fe482bb2-9ebb-4795-b68b-e0ea874560f7', variable: 'GITHUB_PAT')]) {
                     sh '''
                     git config --global url."https://${GITHUB_PAT}@github.com/".insteadOf "https://github.com/"'
-                    git add log
+                    git add log/*
                     git commit -m "Publish artifacts"
                     git push origin'
                     '''
