@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying..."
-                withCredentials([usernamePassword(credentialsId: '14,307377e1bf-6ad3-4aa6-9fa5-16f0c399ea2e', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                withCredentials([usernamePassword(credentialsId: '7377e1bf-6ad3-4aa6-9fa5-16f0c399ea2e', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
                 }
                 script {
