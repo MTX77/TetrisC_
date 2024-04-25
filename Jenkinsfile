@@ -57,7 +57,6 @@ pipeline {
         stage('Archive') {
             steps {
                 echo "Archiving..."
-                sh'ls ./artifacts'
                 archiveArtifacts artifacts: 'log/*', fingerprint: true
             }
         }
