@@ -63,7 +63,7 @@ pipeline {
         stage('Publish') {
             steps {
                 echo "Publishing..."
-                sh 'sudo ./send-to-github.sh'
+                sh './send-to-github.sh'
             }
         }
     }
