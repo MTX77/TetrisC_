@@ -54,13 +54,16 @@ pipeline {
                 }
             }
         }
+        stage('Archive') {
+            steps {
+                echo "Archiving..."
+                archiveArtifacts artifacts: './artifacts', fingerprint: true
+            }
+        }
         stage('Publish') {
             steps {
                 echo "Publishing..."
-                sh'''
-                pwd
-                ls
-                '''
+                sh './send-to-github.sh'
             }
         }
     }
