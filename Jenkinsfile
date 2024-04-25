@@ -44,9 +44,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying..."
-                sh '''
-                docker build -t tetris_deploy:latest -f ./DockerfileDeploy .
-                '''
+                withCredentials([usernamePassword(credentialsId: '14,307377e1bf-6ad3-4aa6-9fa5-16f0c399ea2e', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
+                }
+                script {
+                    def appImage = docker.build('matlugowski/tetrisc:latest', '-f ./DockerfileDeploy .')
+                    sh 'docker tag matlugowski/tetrisc:latest matlugowski/tetrisc:1.0.0'
+                    sh 'docker push matlugowski/tetrisc:1.0.0'
+                }
             }
         }
     }
