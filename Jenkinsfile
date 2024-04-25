@@ -65,7 +65,8 @@ pipeline {
                 echo "Publishing..."
                 sh '''
                 git config --global user.email "lugowski.mateusz.02@gmail.com"
-                git config --global user.name "MTX77"
+                git config --global user.name "mtx77"
+                git checkout master
                 git push --set-upstream origin master
                 git add ./log
                 git commit -m "Publish artifacts"
