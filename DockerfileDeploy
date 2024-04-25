@@ -13,6 +13,6 @@ RUN apt-get update && apt-get install -y \
     && cd TetrisC \
     && cmake . && make
 
-FROM tester AS deploy
+FROM deploy AS tester
 
 CMD ["TetrisC"]
