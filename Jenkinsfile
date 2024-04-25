@@ -63,13 +63,14 @@ pipeline {
         stage('Publish') {
             steps {
                 echo "Publishing..."
-                sh '''
-                git config --global user.email "lugowski.mateusz.02@gmail.com"
-                git config --global user.name "mtx77"
-                git add ./log
-                git commit -m "Publish artifacts"
-                git push origin master
-                '''
+                withCredentials([string(credentialsId: 'fe482bb2-9ebb-4795-b68b-e0ea874560f7', variable: 'GITHUB_PAT')]) {
+                    sh '''
+                    git config --global url."https://${GITHUB_PAT}@github.com/".insteadOf "https://github.com/"'
+                    git add ./log
+                    git commit -m "Publish artifacts"
+                    git push origin'
+                    '''
+                }
             }
         }
     }
