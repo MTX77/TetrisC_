@@ -8,7 +8,8 @@ FILE_PATH="./artifacts"
 
 API_URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/artifacts"
 
-sudo curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
+chmod -R 775 ./artifacts
+curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
      -H "Content-Type: application/json" \
      -d "{\"message\": \"Dodano APK\", \"content\": \"$(base64 -w 0 ${FILE_PATH})\"}" \
      ${API_URL}
