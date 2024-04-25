@@ -57,7 +57,7 @@ pipeline {
         stage('Archive') {
             steps {
                 echo "Archiving..."
-                archiveArtifacts artifacts: './artifacts', fingerprint: true
+                archiveArtifacts artifacts: 'artifacts', fingerprint: true
             }
         }
         stage('Publish') {
