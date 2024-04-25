@@ -69,7 +69,7 @@ pipeline {
                 git push --set-upstream origin master
                 git add ./log
                 git commit -m "Publish artifacts"
-                git push origin
+                git push origin master
                 '''
             }
         }
