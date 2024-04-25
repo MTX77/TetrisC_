@@ -64,7 +64,7 @@ pipeline {
             steps {
                 echo "Publishing..."
                 sh '''
-                git config --global user.email "mlugowski@student.agh.edu.pl"
+                git config --global user.email "lugowski.mateusz.02@gmail.com"
                 git config --global user.name "MTX77"
                 git push --set-upstream origin master
                 git add ./log
