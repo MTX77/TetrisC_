@@ -68,7 +68,7 @@ pipeline {
                     git config --global url."https://${GITHUB_PAT}@github.com/".insteadOf "https://github.com/"'
                     git add log/*
                     git commit -m "Publish artifacts"
-                    git push origin master
+                    git push origin
                     '''
                 }
             }
