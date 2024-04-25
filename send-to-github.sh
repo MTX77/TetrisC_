@@ -6,7 +6,7 @@ REPO_NAME="TetrisC_"
 BRANCH="master"
 FILE_PATH="./artifacts"
 
-API_URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/artifacts"
+API_URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/artifacts"
 
 chown -R jenkins:jenkins ./artifacts
 chmod -R 775 ./artifacts
