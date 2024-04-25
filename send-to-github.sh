@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GITHUB_TOKEN="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"
+GITHUB_TOKEN="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"
 REPO_OWNER="MTX77"
 REPO_NAME="TetrisC_"
 BRANCH="master"
