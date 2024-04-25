@@ -54,5 +54,14 @@ pipeline {
                 }
             }
         }
+        stage('Publish') {
+            steps {
+                echo "Publishing..."
+                sh'''
+                pwd
+                ls
+                ```
+            }
+        }
     }
 }
